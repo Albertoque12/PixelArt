@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Art Editor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <h1>Pixel Art Editor</h1>
+        <p>Offline-ready canvas editor built with vanilla JS.</p>
+      </header>
+
+      <main class="layout">
+        <aside class="panel controls">
+          <section class="control-group">
+            <h2>Canvas</h2>
+            <label for="gridSize">Grid Size</label>
+            <select id="gridSize">
+              <option value="16">16 × 16</option>
+              <option value="32" selected>32 × 32</option>
+              <option value="64">64 × 64</option>
+            </select>
+
+            <label for="zoomRange">Cell Size (Zoom)</label>
+            <input id="zoomRange" type="range" min="6" max="30" value="14" />
+            <span id="zoomValue">14 px</span>
+          </section>
+
+          <section class="control-group">
+            <h2>Tools</h2>
+            <div class="tool-grid" id="toolButtons">
+              <button data-tool="brush" class="tool-btn active">Brush (B)</button>
+              <button data-tool="eraser" class="tool-btn">Eraser (E)</button>
+              <button data-tool="bucket" class="tool-btn">Bucket (G)</button>
+              <button data-tool="line" class="tool-btn">Line (L)</button>
+              <button data-tool="rect-outline" class="tool-btn">Rect Outline</button>
+              <button data-tool="rect-fill" class="tool-btn">Rect Fill</button>
+            </div>
+            <p class="active-tool">Active Tool: <strong id="activeToolLabel">Brush</strong></p>
+          </section>
+
+          <section class="control-group">
+            <h2>Colors</h2>
+            <label for="colorPicker">Primary Color</label>
+            <input id="colorPicker" type="color" value="#ff5722" />
+            <button id="addPaletteColor" class="secondary-btn">Add to Palette</button>
+            <div id="palette" class="palette" aria-label="Color Palette"></div>
+          </section>
+
+          <section class="control-group history-actions">
+            <h2>History</h2>
+            <button id="undoBtn" class="secondary-btn">Undo (Ctrl+Z)</button>
+            <button id="redoBtn" class="secondary-btn">Redo (Ctrl+Y)</button>
+            <button id="clearBtn" class="danger-btn">Clear Canvas</button>
+          </section>
+
+          <section class="control-group">
+            <h2>Save / Export</h2>
+            <button id="exportPngBtn" class="primary-btn">Export PNG</button>
+            <button id="saveJsonBtn" class="secondary-btn">Save JSON</button>
+            <label for="loadJsonInput" class="file-label">Load JSON</label>
+            <input id="loadJsonInput" type="file" accept="application/json" />
+          </section>
+        </aside>
+
+        <section class="panel canvas-panel">
+          <div class="canvas-wrapper" id="canvasWrapper">
+            <canvas id="pixelCanvas" width="448" height="448"></canvas>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
